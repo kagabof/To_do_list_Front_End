@@ -1,0 +1,26 @@
+# OSX
+
+.DS_Store
+
+# npm
+node_modules
+dist
+package-lock.json
+
+# logs
+*.log
+
+
+# ides
+.idea/
+.vscode/
+
+#environment variables
+.env
+
+# testing
+coverage/
+.prettierrc
+
+#Untitled.code
+Untitled.code-workspace

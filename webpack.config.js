@@ -66,13 +66,31 @@ module.exports = {
   plugins: [
     new HtmlWebPackPlugin({
       filename: 'index.html',
-      template: path.join(__dirname, 'public', 'index.html'),
+      template: path.join(__dirname, "public", "index.html"),
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',
     }),
-    new Dotenv(),
+    new Dotenv({
+      path: './.env',
+      safe: true,
+      systemvars: true,
+      silent: true,
+      defaults: false,
+    }),
     new CleanWebpackPlugin(), 
   ],
   node: {

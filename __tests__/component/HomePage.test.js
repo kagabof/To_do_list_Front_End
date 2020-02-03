@@ -4,8 +4,8 @@ import HomePage from '../../src/component/HomePage';
 
 
 describe('test home page', () => {
-  it('try it', () => {
+  it('to should find navbar', () => {
     const wrapper = mount(<HomePage />);
-    expect(wrapper.find('div').length).toBe(1);
+    expect(wrapper.find('NavBar').length).toBe(1);
   });
 });

@@ -1,0 +1,29 @@
+.homepage-containers{
+    background: url('../images/home-photo.png');
+    .homepage-container{
+        padding-top: 3.33%;
+        height: 94.2vh;
+        width: 100vw; 
+        background-color: hsla(0, 0%, 0%, 0.65);
+        .wellcom-text{
+            height: 44.22%;
+            width: 45.21%;
+            text-align: left;
+            position: relative;
+            margin-left: 5.33%;
+            margin-top: 5%;
+            p{
+                display: inline-block;
+                width: 420px;
+                color: #FFF;
+                font-family: Verdana;
+                font-size: 30px;
+                font-weight: 500;
+                line-height: 36px;
+                position: absolute;
+                top: 20%;
+            }
+            
+        }
+    }
+}

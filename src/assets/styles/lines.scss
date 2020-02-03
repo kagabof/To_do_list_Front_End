@@ -1,0 +1,26 @@
+.line{
+    height: 25px;
+    width: 515px;
+    position: relative;
+    .line1 {
+        position: absolute;
+        display: inline-block;
+        box-sizing: border-box;
+        height: 2px;
+        width: 490px;
+        background: none;
+        border: 1px solid #FFF;
+        top: 45%;
+      }
+      .line2 {
+        position: absolute;
+        display: inline-block;
+        box-sizing: border-box;
+        height: 25px;
+        width: 25px;
+        background: none;
+        border: 1px solid #FFF;
+        border-radius: 50%;
+        right: 0%;
+      }
+}

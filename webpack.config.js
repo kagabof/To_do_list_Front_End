@@ -24,22 +24,56 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,
+        loader: 'graphql-tag/loader',
+      },
+      {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ['babel-loader', 'eslint-loader'],
       },
       {
-        test: /.(css|scss)$/,
+        test: /\.css$/,
         use: [
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
-              modules: false,
+              modules: true,
+              sourceMap: true,
+              importLoaders: 1,
+              localIdentName: '[name]--[local]--[hash:base64:8]',
             },
           },
-          'sass-loader',
+          'postcss-loader',
         ],
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+            },
+          }
+        ]
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg|ico)$/,
+        use: 'file-loader?name=[name].[ext]',
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: 'file-loader?name=[name].[ext]',
       },
       {
         test: /\.html$/,
@@ -50,14 +84,6 @@ module.exports = {
               name: '[path][name]-[hash:8].[ext]',
             },
             loader: 'html-loader',
-          },
-        ],
-      },
-      {
-        test: /\.(png|jpe?g|gif|svg)$/i,
-        use: [
-          {
-            loader: 'file-loader',
           },
         ],
       },
@@ -80,10 +106,7 @@ module.exports = {
         minifyURLs: true,
       },
     }),
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css',
-    }),
+    new MiniCssExtractPlugin(),
     new Dotenv({
       path: './.env',
       safe: true,

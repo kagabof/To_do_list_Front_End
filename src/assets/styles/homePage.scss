@@ -2,28 +2,45 @@
     background: url('../images/home-photo.png');
     .homepage-container{
         padding-top: 3.33%;
-        height: 94.2vh;
+        min-height: 94.2vh;
         width: 100vw; 
-        background-color: hsla(0, 0%, 0%, 0.65);
-        .wellcom-text{
-            height: 44.22%;
-            width: 45.21%;
-            text-align: left;
-            position: relative;
-            margin-left: 5.33%;
+        background-color: hsla(0, 0%, 0%, 0.534);
+        .home-display{
             margin-top: 5%;
+            margin: 5% 5.33% auto 0%;
+            width: 94.66%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        .wellcom-text{
+            height: 30.22vh;
+            width: 70.21%;
+            text-align: left;
+            margin: 20% auto auto 10.33%;
             p{
-                display: inline-block;
-                width: 420px;
                 color: #FFF;
                 font-family: Verdana;
                 font-size: 30px;
                 font-weight: 500;
                 line-height: 36px;
-                position: absolute;
-                top: 20%;
             }
             
         }
+    }
+    .home-page-message{
+        display: block;
+        height: 22px;
+        width: 100%;
+        color: #FFF;
+        font-family: Verdana;
+        font-size: 18px;
+        font-style: italic;
+        line-height: 22px;
+        margin-left: 10.33%;
+        position: relative;
+        top: -12px;
+    }
+    .side-not-visible{
+        display: none;
     }
 }

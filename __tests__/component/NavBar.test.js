@@ -2,6 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import NavBar from '../../src/component/NavBar';
 
+document.body.innerHTML = '<div id="signup"></div> ';
 
 describe('test nav bar', () => {
   const wrapper = mount(<NavBar />);

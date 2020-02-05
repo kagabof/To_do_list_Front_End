@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
@@ -16,7 +17,11 @@ const NavBar = () => {
       ...navLink,
       active: name,
     });
+    (name === 'signup')
+      ? document.getElementById('signup').classList.remove('side-not-visible')
+      : document.getElementById('signup').classList.add('side-not-visible');
   };
+
   return (
     <div className="navbar">
       <div className="logo-class" onClick={handleClick('home')}>

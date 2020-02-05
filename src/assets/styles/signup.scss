@@ -1,0 +1,87 @@
+.signup-form{
+    margin: 0 0 0 auto;
+    width: 435px;
+    background-color: rgba(0,0,0,0.45);
+    padding-top: 4.22%;
+    text-align: center;
+
+    .signup-form--title{
+        color: #FFF;
+        font-family: Verdana;
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 30px;
+        text-align: left;
+        width: 373px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .signup-form--input{
+        p{
+            color: red;
+            padding: 0px;
+            margin: 0px;
+        }
+        input{
+            height: 31px;
+            width: 373px;
+            border: none;
+            background: none;
+            border-bottom: 2px solid white; 
+            color: white;
+            font-family: Verdana;
+            font-size: 15px;
+            line-height: 18px;
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: 27px;
+            outline: none;
+        }
+        input:active{
+            background: none;
+        }
+        input:focus{
+            background: none;
+        }
+        @-webkit-keyframes autofill {
+            0%,100% {
+                background: transparent;
+                color: white;
+                font-family: Verdana;
+                font-size: 15px;
+                line-height: 18px;
+
+            }
+        }
+        
+        input:-webkit-autofill {
+            -webkit-animation-delay: 1s;
+            -webkit-animation-name: autofill;
+            -webkit-animation-fill-mode: both;
+        }
+    }
+    .signup-form--button{
+        display: inline-block;
+        width: 180px;
+        border-radius: 10px;
+        background-color: rgba(24,162,45,0.56);
+        text-align: center;
+        padding-top: 11.5px;
+        padding-bottom: 11.5px;
+        color: #FFF;
+        font-family: Verdana;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 22px;
+        margin-top: 45px;
+        margin-bottom: 45px;
+        cursor: pointer;
+    }
+
+    .signup-form--button:active{
+        width: 175px;
+        background-color: rgba(12, 139, 31, 0.815);
+        color: rgba(255, 255, 255, 0.637);
+    }
+}

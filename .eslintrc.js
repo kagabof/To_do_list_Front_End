@@ -9,6 +9,7 @@ module.exports = {
   },
   rules: {
     'function-paren-newline': 'off',
+    "react/jsx-props-no-spreading": "off",
     'no-param-reassign': 0,
     'no-underscore-dangle': 'off',
     'import/extensions': ['off','never'],
@@ -26,6 +27,6 @@ module.exports = {
           'componentDidMount'
         ]
       }
-    ]
+    ],
   }
 };

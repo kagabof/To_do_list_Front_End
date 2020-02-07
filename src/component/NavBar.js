@@ -1,48 +1,37 @@
+/* eslint-disable arrow-body-style */
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import Logo from './Logo';
 import '../assets/styles/navBar.scss';
 import NavLink from './NavLink';
 
 
-const NavBar = () => {
-  const [navLink, useNavLink] = useState({
-    active: 'home',
-  });
-
-  const handleClick = (name) => () => {
-    name && useNavLink({
-      ...navLink,
-      active: name,
-    });
-    (name === 'signup')
-      ? document.getElementById('signup').classList.remove('side-not-visible')
-      : document.getElementById('signup').classList.add('side-not-visible');
-  };
-
+const NavBar = ({ navLink }) => {
   return (
     <div className="navbar">
-      <div className="logo-class" onClick={handleClick('home')}>
-        <Logo />
-      </div>
+      <Link to="/">
+        <div className="logo-class">
+          <Logo />
+        </div>
+      </Link>
       <div className="nav-links">
         <NavLink
-          className={navLink.active === 'home' ? 'nav-link-active' : 'nav-link'}
-          handleClick={handleClick}
+          className={navLink === 'home' ? 'nav-link-active' : 'nav-link'}
           name="home"
           linkName="HOME"
         />
         <NavLink
-          className={navLink.active === 'signup' ? 'nav-link-active' : 'nav-link'}
-          handleClick={handleClick}
+          className={navLink === 'signup' ? 'nav-link-active' : 'nav-link'}
           name="signup"
           linkName="SIGNUP"
         />
         <NavLink
-          className={navLink.active === 'login' ? 'nav-link-active' : 'nav-link'}
-          handleClick={handleClick}
+          className={navLink === 'login' ? 'nav-link-active' : 'nav-link'}
           name="login"
           linkName="LOGIN"
         />
@@ -51,5 +40,8 @@ const NavBar = () => {
   );
 };
 
+NavBar.propTypes = {
+  navLink: PropTypes.string.isRequired,
+};
 
 export default NavBar;

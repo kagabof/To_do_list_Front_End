@@ -1,10 +1,10 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useState } from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from 'react';
 import '../assets/styles/signup.scss';
 import { useMutation } from '@apollo/react-hooks';
+import { useHistory } from 'react-router-dom';
 import { signupValidate } from './validation';
-import CREATE_USER from '../graphql/mutation/user';
+import { CREATE_USER } from '../graphql/mutation/user';
 import HomeInput from './HomeInput';
 
 const Signup = () => {
@@ -17,13 +17,14 @@ const Signup = () => {
     rePassword: true,
   });
 
-  const [CreateUser, { loading }] = useMutation(CREATE_USER);
+  const [CreateUser, { loading, data, error }] = useMutation(CREATE_USER);
   const handelChange = (e) => {
     setAtribut({
       ...atribut,
       [e.target.name]: e.target.value,
     });
   };
+  const history = useHistory();
   const handelOnKeyUp = () => setValidation(signupValidate(atribut));
 
   const handelSubmit = () => {
@@ -34,16 +35,16 @@ const Signup = () => {
       firstName && lastName && email && password
     ) && CreateUser({
       variables: {
-        firstName,
-        lastName,
-        email,
+        firstName: atribut.firstName,
+        lastName: atribut.lastName,
+        email: atribut.email,
         role: 'admin',
-        password,
-        age: null,
+        password: atribut.password,
+        age: 12,
       },
     });
   };
-
+  useEffect(() => data && data.CreateUser && history.push('/login'));
   const {
     firstName, lastName, email, password, rePassword,
   } = validation;
@@ -53,6 +54,7 @@ const Signup = () => {
         Create an account
       </div>
       <div className="signup-form--input signup-display">
+        <p>{error && error && error.graphQLErrors && error.graphQLErrors[0].message}</p>
         <HomeInput
           handelChange={handelChange}
           validation={firstName}
@@ -91,7 +93,14 @@ const Signup = () => {
           errorMessage="re-password should be semilar to password!"
         />
       </div>
-      <div className="signup-form--button" onClick={handelSubmit} onMouseDown={handelOnKeyUp}>
+      <div
+        className="signup-form--button"
+        onClick={handelSubmit}
+        onMouseDown={handelOnKeyUp}
+        onKeyPress={handelOnKeyUp}
+        role="button"
+        tabIndex="0"
+      >
         SIGNUP
       </div>
     </div>

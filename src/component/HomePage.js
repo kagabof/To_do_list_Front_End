@@ -1,14 +1,19 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable no-unused-expressions */
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../assets/styles/homePage.scss';
 import Line from './lines';
 import NavBar from './NavBar';
+import Login from './Login';
 import Signup from './Signup';
 
 
-const HomePage = () => (
+const HomePage = ({ navLink }) => (
   <div className="homepage-containers">
     <div className="homepage-container">
-      <NavBar />
+      <NavBar navLink={navLink} />
       <div className="home-display">
         <div className="left-side">
           <div className="wellcom-text">
@@ -27,13 +32,22 @@ const HomePage = () => (
           </div>
         </div>
         <div className="right-side">
-          <div id="signup" className="side-not-visible">
-            <Signup />
-          </div>
+          {
+            navLink === 'login'
+              ? <Login />
+              : (navLink === 'signup')
+                ? <Signup />
+                : <div />
+
+          }
         </div>
       </div>
     </div>
   </div>
 );
+
+HomePage.propTypes = {
+  navLink: PropTypes.string.isRequired,
+};
 
 export default HomePage;

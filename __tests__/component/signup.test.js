@@ -2,10 +2,10 @@ import React from 'react';
 import { MockedProvider } from '@apollo/react-testing';
 import { mount } from 'enzyme';
 import Signup from '../../src/component/Signup';
-import { stringValidation, integerValidation } from '../../src/component/validation';
+import { integerValidation, stringValidation } from '../../src/component/validation';
 
-// jest.mock('../../src/component/HomeInput.js', () => 'HomeInput');
 
+jest.mock('react-router-dom', () => ({ useHistory: jest.fn(() => ({ push: jest.fn() })) }));
 jest.mock('@apollo/react-hooks', () => ({
   useMutation: jest.fn(() => ([jest.fn(), {
     data: {
@@ -18,7 +18,7 @@ jest.mock('@apollo/react-hooks', () => ({
       },
     },
     loading: false,
-    error: 'hello',
+    error: { graphQLErrors: [{ message: 'error' }] },
   }])),
 }));
 
@@ -29,7 +29,7 @@ describe('test home page', () => {
     </MockedProvider>,
   );
 
-  it('to should Signup with data', () => {
+  it('to should Signup with data', (done) => {
     wrapper.find('HomeInput').at(0).find('input').simulate('change', { target: { value: 'kagabo', name: 'firstName' } });
     wrapper.find('HomeInput').at(1).find('input').simulate('change', { target: { value: 'faustin', name: 'lastName' } });
     wrapper.find('HomeInput').at(2).find('input').simulate('change', { target: { value: 'faustinkagabo@gmail.com', name: 'email' } });
@@ -38,6 +38,7 @@ describe('test home page', () => {
     wrapper.find('.signup-form--button').at(0).simulate('mousedown');
     wrapper.find('.signup-form--button').at(0).simulate('click');
     expect(wrapper.find('HomeInput').at(4).find('input').props().name).toBe('rePassword');
+    done();
   });
 
   it('should return false when no argument', () => {

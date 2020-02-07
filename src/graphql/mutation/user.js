@@ -19,4 +19,15 @@ const CREATE_USER = gql`
   }
 `;
 
-export default CREATE_USER;
+const USER_LOGIN = gql`
+  query (
+  $email: String!,
+  $password: String!,
+  ) {
+    Signin(email: $email, password: $password,){
+      token
+    }
+  }
+`;
+
+export { CREATE_USER, USER_LOGIN };

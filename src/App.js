@@ -2,14 +2,15 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import HomePage from './component/HomePage';
-// import './assets/styles/main.css';
 
 
 class App extends Component {
   render() {
     return (
       <Switch>
-        <Route path="/" component={HomePage} />
+        <Route exact path="/" component={() => <HomePage navLink="home" />} />
+        <Route exact path="/signup" component={() => <HomePage navLink="signup" />} />
+        <Route exact path="/login" component={() => <HomePage navLink="login" />} />
       </Switch>
     );
   }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { mount } from 'enzyme';
-import NavBar from '../../src/component/NavBar';
+import NavBar from '../../src/component/home/NavBar';
 
 document.body.innerHTML = '<div id="signup"></div> ';
 

@@ -2,12 +2,12 @@ import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { MockedProvider } from '@apollo/react-testing';
 import { mount } from 'enzyme';
-import HomePage from '../../src/component/HomePage';
+import HomePage from '../../src/container/HomePage';
 import setWithExpiry from '../../src/helpers/setWithExpiry';
 
 
-jest.mock('../../src/component/Signup.js', () => 'div');
-jest.mock('../../src/component/Login.js', () => 'div');
+jest.mock('../../src/component/home/Signup.js', () => 'div');
+jest.mock('../../src/component/home/Login.js', () => 'div');
 
 describe('test home page', () => {
   it('should find  with home', () => {

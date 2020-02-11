@@ -1,7 +1,7 @@
 import React from 'react';
 import { MockedProvider } from '@apollo/react-testing';
 import { mount } from 'enzyme';
-import Login from '../../src/component/Login';
+import Login from '../../src/component/home/Login';
 
 
 jest.mock('react-router-dom', () => ({ useHistory: jest.fn(() => ({ push: jest.fn() })) }));
@@ -27,7 +27,12 @@ describe('test home page', () => {
   );
 
   it('to should Signup with data', () => {
-    wrapper.find('HomeInput').at(0).find('input').simulate('change', { target: { value: 'faustinkagabo@gmail.com', name: 'email' } });
+    wrapper.find('HomeInput').at(0).find('input').simulate('change', {
+      target: {
+        value: 'faustinkagabo@gmail.com',
+        name: 'email',
+      },
+    });
     wrapper.find('HomeInput').at(1).find('input').simulate('change', { target: { value: 'Dede199@', name: 'password' } });
     wrapper.find('.signup-form--button').at(0).simulate('mousedown');
     wrapper.find('.signup-form--button').at(0).simulate('click');

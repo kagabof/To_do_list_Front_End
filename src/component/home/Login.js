@@ -1,15 +1,15 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable no-unused-vars */
+
 import React, { useState, useEffect } from 'react';
-import '../assets/styles/signup.scss';
+import '../../assets/styles/signup.scss';
 import { useQuery } from '@apollo/react-hooks';
 import { useHistory } from 'react-router-dom';
 import { loginValidation } from './validation';
-import { USER_LOGIN } from '../graphql/mutation/user';
+import { USER_LOGIN } from '../../graphql/mutation/user';
 import HomeInput from './HomeInput';
-import localStorageSet from '../helpers/setWithExpiry';
+import setWithExpiry from '../../helpers/setWithExpiry';
 
 
 const Login = () => {
@@ -22,7 +22,7 @@ const Login = () => {
     valid: true,
   });
   const history = useHistory();
-  const { data, loading, error } = useQuery(USER_LOGIN, {
+  const { data, error } = useQuery(USER_LOGIN, {
     variables: {
       email: atribut && atribut.email,
       password: atribut && atribut.password,
@@ -38,7 +38,7 @@ const Login = () => {
 
   const handelSubmit = () => {
     const { valid } = validation;
-    const datas = valid && setRes({
+    valid && setRes({
       ...res,
       error,
       data,
@@ -46,12 +46,13 @@ const Login = () => {
   };
 
   const { valid } = validation;
+
   useEffect(() => {
     res
     && res.data
     && res.data.Signin
     && res.data.Signin.token
-    && (localStorageSet('to_do_token', res.data.Signin.token, 4), history.push('/'));
+    && (setWithExpiry('to_do_token', res.data.Signin.token, 4), history.push('/dashboard'));
   });
   return (
     <div className="signup-form">

@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
-import '../assets/styles/signup.scss';
+import '../../assets/styles/signup.scss';
 import { useMutation } from '@apollo/react-hooks';
 import { useHistory } from 'react-router-dom';
 import { signupValidate } from './validation';
-import { CREATE_USER } from '../graphql/mutation/user';
+import { CREATE_USER } from '../../graphql/mutation/user';
 import HomeInput from './HomeInput';
 
 const Signup = () => {

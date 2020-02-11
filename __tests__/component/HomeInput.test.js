@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import HomeInput from '../../src/component/HomeInput';
+import HomeInput from '../../src/component/home/HomeInput';
 
 const props = {
   handelChange: jest.fn(),

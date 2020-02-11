@@ -1,8 +1,8 @@
 import React from 'react';
 import { MockedProvider } from '@apollo/react-testing';
 import { mount } from 'enzyme';
-import Signup from '../../src/component/Signup';
-import { integerValidation, stringValidation } from '../../src/component/validation';
+import Signup from '../../src/component/home/Signup';
+import { integerValidation, stringValidation } from '../../src/component/home/validation';
 
 
 jest.mock('react-router-dom', () => ({ useHistory: jest.fn(() => ({ push: jest.fn() })) }));

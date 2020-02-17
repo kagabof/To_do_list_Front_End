@@ -4,10 +4,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../assets/styles/homePage.scss';
-import Line from './lines';
-import NavBar from './NavBar';
-import Login from './Login';
-import Signup from './Signup';
+import Line from '../component/home/lines';
+import NavBar from '../component/home/NavBar';
+import Login from '../component/home/Login';
+import Signup from '../component/home/Signup';
 
 
 const HomePage = ({ navLink }) => (

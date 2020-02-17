@@ -1,0 +1,43 @@
+.success{
+    background-color: rgba(115, 195, 91, 0.56);
+    border: 1.5px solid rgb(6, 98, 14);
+}
+.error{
+    background-color: rgba(212,95,95,0.67);
+    border: 1px solid #900;
+}
+.worning{
+    background-color: rgba(215,166,18,0.7);
+    border: 1.5px solid #FB8700;
+}
+.dash-container--message{
+    top: 40px;
+    right: 25px;
+    display: grid;
+    position: fixed;
+    grid-template-columns: 1fr 4fr 1fr;
+    max-width: 348px;
+    border-radius: 10px;
+    align-items: center;
+    padding: 15px;
+    z-index: 1000px;
+
+    &-text{
+        color: #FFF;
+        font-family: Verdana;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 19px;
+        justify-self: center;
+    }
+    &-success{
+        height: 24px;
+        width: 24px;
+        justify-self: flex-start;
+    }
+    &-close {
+        justify-self: flex-end;
+        height: 15px;
+        width: 15px;
+      }
+}

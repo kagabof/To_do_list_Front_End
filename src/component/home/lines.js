@@ -1,5 +1,5 @@
 import React from 'react';
-import '../assets/styles/lines.scss';
+import '../../assets/styles/lines.scss';
 
 
 const Lines = () => (

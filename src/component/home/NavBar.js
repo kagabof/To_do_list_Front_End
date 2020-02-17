@@ -7,7 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
-import '../assets/styles/navBar.scss';
+import '../../assets/styles/navBar.scss';
 import NavLink from './NavLink';
 
 

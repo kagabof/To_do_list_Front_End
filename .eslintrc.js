@@ -14,6 +14,7 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'import/extensions': ['off','never'],
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'react/jsx-indent': 1,
     'react/no-children-prop': 0,
     'no-nested-ternary': 0,
     'no-unused-expressions': ['error', { allowShortCircuit: true }],

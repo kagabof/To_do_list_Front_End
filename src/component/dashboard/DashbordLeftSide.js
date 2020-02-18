@@ -53,10 +53,10 @@ const DashbordLeftSide = ({ handleModels }) => (
         </div>
       </div>
       <div className="dash-container--main-left--buttons-more">
-        <div className="dash-container--main-left--buttons-more--1" onClick={() => handleModels('up', 'createTodo')}>
+        <div className="dash-container--main-left--buttons-more--1" onClick={() => handleModels('up', 'todo')}>
           Create List
         </div>
-        <div className="dash-container--main-left--buttons-more--2">
+        <div className="dash-container--main-left--buttons-more--2" onClick={() => handleModels('up', 'schedul')}>
           Schedul
         </div>
       </div>

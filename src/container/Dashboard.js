@@ -11,12 +11,14 @@ import ResponceMessage from '../component/dashboard/ResponceMessage';
 
 const DashBoard = () => {
   const [modelState, setModelState] = useState('down');
+  const [currentMode, setCurrentMode] = useState('createTodo');
   const [responce, setResponce] = useState({
     status: 'down',
     type: 'error',
     message: 'Hello',
   });
-  const handleModels = (mode, model) => mode && setModelState(mode);
+  const handleModels = (mode, model) => mode
+    && (setModelState(mode), setCurrentMode(model, 'todo'));
   const handleResponce = ({ message, status, type }) => {
     setResponce({
       ...responce,
@@ -53,6 +55,7 @@ const DashBoard = () => {
         </div>
         <DashboardModels
           modelState={modelState}
+          currentMode={currentMode}
           handleModels={handleModels}
           handleResponce={handleResponce}
         />

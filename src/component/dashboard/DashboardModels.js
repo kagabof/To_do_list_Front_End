@@ -9,7 +9,9 @@ import createToDoListMutation from '../../graphql/mutation/todo';
 import { stringValidation } from '../home/validation';
 
 
-const DashboardModels = ({ modelState, handleModels, handleResponce }) => {
+const DashboardModels = ({
+  modelState, handleModels, handleResponce, currentMode,
+}) => {
   const [inputData, setInputData] = useState({});
   const [loading, setLoading] = useState(false);
   const createToDoList = createToDoListMutation();
@@ -19,12 +21,12 @@ const DashboardModels = ({ modelState, handleModels, handleResponce }) => {
       [e.target.name]: e.target.value,
     });
   };
-  const handleClick = async () => {
+  const handleClick = async (type) => {
     setLoading(true);
     if (stringValidation(inputData.todoListTitle)) {
       const { data, error } = await createToDoList({
         variables: {
-          type: 'list',
+          type,
           title: inputData && inputData.todoListTitle,
         },
       });
@@ -32,44 +34,48 @@ const DashboardModels = ({ modelState, handleModels, handleResponce }) => {
       data && handleModels('down');
       data && (handleResponce({
         type: 'success',
-        message: 'To do list created',
+        message: `${type} created`,
         status: 'up',
       }), handleModels('down'));
       error && handleResponce({
         type: 'error',
-        message: 'To do list not created',
+        message: `${type} not created`,
         status: 'up',
       });
     } else {
       handleModels('down');
       handleResponce({
         type: 'error',
-        message: 'To do list not created',
+        message: `${type} not created`,
         status: 'up',
       });
     }
   };
-
   return (
     <div className="dash-container--models" style={{ display: `${(modelState === 'down') ? 'none' : 'grid'}` }}>
       <div
         className="dash-container--models-create-todo"
-        style={{ display: `${modelState === 'down' && 'none'}` }}
+        style={{ display: `${currentMode ? '' : 'none'}` }}
       >
         <div className="dash-container--models-create-todo--top">
           <div>
-            Creact to do list
+            { currentMode !== 'schedul' ? 'Creact to do list' : 'Create schedul'}
           </div>
-          <img src={closeIcon} alt="closeIcon" onClick={() => handleModels('down')} />
+          <img src={closeIcon} alt="closeIcon" onClick={() => handleModels('down', 'todo')} />
         </div>
         <div className="dash-container--models-create-todo--input">
-          <input type="text" name="todoListTitle" placeholder="List name" onChange={handelChange} />
+          <input
+            type="text"
+            name="todoListTitle"
+            placeholder={currentMode === 'list' ? 'List name' : 'Schedul name'}
+            onChange={handelChange}
+          />
         </div>
         <div>
           <div
             type="submit"
             className="dash-container--models-create-todo--button disabled"
-            onClick={handleClick}
+            onClick={() => handleClick(currentMode)}
             disabled={loading}
           >
             Create
@@ -84,6 +90,12 @@ DashboardModels.propTypes = {
   modelState: PropTypes.string.isRequired,
   handleModels: PropTypes.func.isRequired,
   handleResponce: PropTypes.func.isRequired,
+  currentMode: PropTypes.string,
 };
+
+DashboardModels.defaultProps = {
+  currentMode: 'todo',
+};
+
 
 export default DashboardModels;

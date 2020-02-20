@@ -73,6 +73,35 @@ describe('test dashboard models', () => {
       modelState: 'up',
       handleModels: jest.fn(),
       handleResponce: jest.fn(),
+      currentMode: 'schedul',
+    };
+    const newWrapper = mount(
+      <DashboardModels {...newProps} />,
+    );
+    wrapper.find('.dash-container--models-create-todo--button').simulate('click');
+    expect(newWrapper.find('img').props().alt).toBe('closeIcon');
+  });
+
+  it('should display the list model', () => {
+    const newProps = {
+      modelState: 'up',
+      handleModels: jest.fn(),
+      handleResponce: jest.fn(),
+      currentMode: 'list',
+    };
+    const newWrapper = mount(
+      <DashboardModels {...newProps} />,
+    );
+    wrapper.find('.dash-container--models-create-todo--button').simulate('click');
+    expect(newWrapper.find('img').props().alt).toBe('closeIcon');
+  });
+
+  it('should not display the model', () => {
+    const newProps = {
+      modelState: 'up',
+      handleModels: jest.fn(),
+      handleResponce: jest.fn(),
+      currentMode: '',
     };
     const newWrapper = mount(
       <DashboardModels {...newProps} />,

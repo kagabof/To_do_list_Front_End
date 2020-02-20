@@ -7,6 +7,14 @@ import Login from '../../src/component/home/Login';
 jest.mock('react-router-dom', () => ({ useHistory: jest.fn(() => ({ push: jest.fn() })) }));
 
 jest.mock('@apollo/react-hooks', () => ({
+  useLazyQuery: jest.fn(() => ([jest.fn(), {
+    data: {
+      Signin: {
+        token: 'jagfeg',
+      },
+    },
+    error: {},
+  }])),
   useQuery: jest.fn(() => ({
     data: {
       Signin: {

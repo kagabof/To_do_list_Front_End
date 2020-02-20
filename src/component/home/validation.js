@@ -23,15 +23,10 @@ const signupValidate = ({
   rePassword: !!((passwordValidation(rePassword) && (password === rePassword))),
 });
 
-const loginValidation = ({ email, password }) => !!((/^([a-zA-Z0-9!@#\$%\^&\*\.]{2,})$/.test(String(password))
-  && /^([a-zA-Z0-9!@#\$%\^&\*\.]{2,})$/.test(String(email))));
-
-
 export {
   signupValidate,
   integerValidation,
   stringValidation,
   emailValidation,
   passwordValidation,
-  loginValidation,
 };
